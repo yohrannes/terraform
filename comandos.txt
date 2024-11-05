@@ -1,0 +1,19 @@
+# Inicializando o terraform via docker.
+# Estou especificando o -it para interagir com o terminaldo container, com o -v para fazer com que utilize o volume da diretorio atual na pasta /app, o -w para especificar qual será o diretório de trabalho (workdir) para /app, definindo o entrypoint para nada .. "" pois caso não faça isso é para executar diretamente o comando do terraform(apply,plan..) e não o terminal, e o temrinal (sh).
+docker run -it -v /home/yohrannes/repos-git/terraform:/app -w /app --entrypoint "" hashicorp/terraform:light sh
+
+# Vefinindo os valores das variáveis de ambiente para s autenticar com a AWS.
+export AWS_ACCESS_KEY_ID=<yourkey>
+export AWS_SECRET_ACCESS_KEY=<yourkey>
+
+# Boa prática ... forçar baixar sempre os plugins mais atualizados.
+terraform init -upgrade
+
+# Bos prática, salvar o estado do plan em um arquivo binario e aplicar a partir deste arquivo.
+terraform plan -out=path
+terraform plan -out plan
+terraform apply plan
+
+# Boa prática, verificar antes destruir
+terraform plan -destroy
+terraform destroy
