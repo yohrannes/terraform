@@ -1,5 +1,5 @@
 variable "image_id" {
-    default = "ami-12345678" ## valor default caso nao especifique nada
+    default = "ami-0887e1d5e322290cf" ## valor default caso nao especifique nada
     type = string   
     description = "The id of the machine image (AMI) to use for the server."
     
