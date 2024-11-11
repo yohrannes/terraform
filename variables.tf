@@ -8,3 +8,9 @@ variable "image_id" {
     error_message = "The image_id value must be a valid AMI id, starting with \"ami-\"."
   }
 }
+
+variable "ssh_public_key_path" {
+  description = "SSH KEY PATH"
+  type        = string
+  default     = "~/.ssh/id_rsa.pub"
+}
